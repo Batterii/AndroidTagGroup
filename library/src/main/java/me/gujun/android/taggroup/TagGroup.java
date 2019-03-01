@@ -386,6 +386,19 @@ public class TagGroup extends ViewGroup {
         return tagList.toArray(new String[tagList.size()]);
     }
 
+    public List<String> getTagList(){
+        final int count = getChildCount();
+        final List<String> tagList = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            final TagView tagView = getTagAt(i);
+            if (tagView.mState == TagView.STATE_NORMAL) {
+                tagList.add(tagView.getText().toString());
+            }
+        }
+
+        return tagList;
+    }
+
     /**
      * @see #setTags(String...)
      */
