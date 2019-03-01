@@ -13,6 +13,7 @@ import android.graphics.RectF;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.ArrowKeyMovementMethod;
@@ -709,6 +710,10 @@ public class TagGroup extends ViewGroup {
 
         public TagView(Context context, final int state, CharSequence text) {
             super(context);
+
+            setRawInputType(InputType.TYPE_CLASS_TEXT);
+            setImeOptions(EditorInfo.IME_ACTION_GO);
+
             setPadding(horizontalPadding, verticalPadding, horizontalPadding, verticalPadding);
             setLayoutParams(new TagGroup.LayoutParams(
                     TagGroup.LayoutParams.WRAP_CONTENT,
