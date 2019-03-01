@@ -540,6 +540,8 @@ public class TagGroup extends ViewGroup {
          * @param tag the deleted tag.
          */
         void onDelete(TagGroup tagGroup, String tag);
+
+        void onChanged(TagGroup tagGroup, CharSequence tag);
     }
 
     /**
@@ -806,6 +808,9 @@ public class TagGroup extends ViewGroup {
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        if(mOnTagChangeListener != null) {
+                            mOnTagChangeListener.onChanged(TagGroup.this, s);
+                        }
                     }
 
                     @Override
